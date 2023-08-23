@@ -1,0 +1,465 @@
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+A conda environment has been detected CONDA_PREFIX=
+/sw/external/python/anaconda3 
+anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.
+
+Currently Loaded Modules:
+  1) cue-login-env/1.0   4) gcc/11.2.0    7) openmpi/4.1.2
+  2) default             5) cuda/11.6.1   8) cudnn/8.4.1.50
+  3) modtree/gpu         6) ucx/1.11.2    9) anaconda3_gpu/4.13.0
+
+ 
+
+/u/avroy/UQ_XAI_Studies/models/PFIN_UQ/model/jobsub
+total 508K
+-rw-rw----+ 1 avroy delta_bbhj  925 Mar 31 16:58 jobsubmitter_dummy.py
+-rw-rw----+ 1 avroy delta_bbhj 5.2K May 27 21:16 jobsubmitter_jetclass_1gpu.py
+-rw-rw----+ 1 avroy delta_bbhj  15K May 27 21:04 jobsubmitter_jetclass_1gpu.py~
+-rw-rw----+ 1 avroy delta_bbhj  743 May 19 01:04 jobsubmitter_jetclass.py
+-rw-rw----+ 1 avroy delta_bbhj  15K May 18 13:59 jobsubmitter.py
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 19 13:52 UQPFIN-jetclass-run-jetclass20M_0_baseline.slurm
+-rw-------+ 1 avroy delta_bbhj  973 May 19 00:59 UQPFIN-jetclass-run.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0.1_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0.1_skiph.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0.1_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0.1_skiptwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0.1_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0_skiph.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0_skiptwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_0_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_nominal_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_nominal_skiph.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_nominal_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_nominal_skiptwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_nominal_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 27 21:18 UQPFIN-run-jetclass_softmax_baseline_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_dropout_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_dropout_skiph.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_dropout_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_dropout_skiptwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_dropout_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiph_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptop_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skiptwz_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 27 21:18 UQPFIN-run-jetclass_softmax_skipwz_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0.1_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0.1_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0.1_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_nominal_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_nominal_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_nominal_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_dropout_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_dropout_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_dropout_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_9.slurm
+-rw-------+ 1 avroy delta_bbhj  969 May 15 09:44 UQPFIN-run.slurm
+/projects/bbhj/avroy/UQ_XAI_Studies/models/PFIN_UQ/model
+total 200K
+drwxr-s---+ 2 avroy delta_bbhj  12K May 28 09:25 jobouts
+drwxr-s---+ 2 avroy delta_bbhj  16K May 27 21:18 jobsub
+-rw-rw----+ 1 avroy delta_bbhj 8.4K May 18 21:37 PFINDataset.py
+-rw-rw----+ 1 avroy delta_bbhj 8.4K May 15 14:46 PFINDataset.py~
+drwxrws---+ 2 avroy delta_bbhj 4.0K May 18 21:38 __pycache__
+drwxrws---+ 2 avroy delta_bbhj  20K May 28 08:46 trained_model_dicts
+drwxr-s---+ 2 avroy delta_bbhj 4.0K Mar 31 15:09 trained_model_dicts_old
+drwxrws---+ 2 avroy delta_bbhj  36K May 28 09:25 trained_models
+drwxr-s---+ 2 avroy delta_bbhj 4.0K Mar 31 15:10 trained_models_old
+-rw-rw----+ 1 avroy delta_bbhj  23K May 18 15:52 train_mod.py
+-rw-rw----+ 1 avroy delta_bbhj  20K May 27 21:06 train.py
+-rw-rw----+ 1 avroy delta_bbhj  20K May 18 13:50 train.py~
+-rw-rw----+ 1 avroy delta_bbhj  13K May  5 09:36 UQPFIN.py
+job is starting on gpua055.delta.ncsa.illinois.edu
+# conda environments:
+#
+base                     /sw/external/python/anaconda3
+toptagger_env         *  /u/avroy/.conda/envs/toptagger_env
+
+/sw/external/python/anaconda3_gpu/bin/python
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+UQPFIN                                   [1, 8]                    --
+├─Sequential: 1-1                        [60, 64]                  --
+│    └─Sequential: 2-1                   [60, 100]                 --
+│    │    └─Linear: 3-1                  [60, 100]                 1,200
+│    │    └─ReLU: 3-2                    [60, 100]                 --
+│    └─Sequential: 2-2                   [60, 100]                 --
+│    │    └─Linear: 3-3                  [60, 100]                 10,100
+│    │    └─ReLU: 3-4                    [60, 100]                 --
+│    └─Sequential: 2-3                   [60, 64]                  --
+│    │    └─Linear: 3-5                  [60, 64]                  6,464
+│    │    └─ReLU: 3-6                    [60, 64]                  --
+├─Sequential: 1-2                        [1770, 64]                --
+│    └─Sequential: 2-4                   [1770, 128]               --
+│    │    └─Linear: 3-7                  [1770, 128]               640
+│    │    └─ReLU: 3-8                    [1770, 128]               --
+│    └─Sequential: 2-5                   [1770, 128]               --
+│    │    └─Linear: 3-9                  [1770, 128]               16,512
+│    │    └─ReLU: 3-10                   [1770, 128]               --
+│    └─Sequential: 2-6                   [1770, 64]                --
+│    │    └─Linear: 3-11                 [1770, 64]                8,256
+│    │    └─ReLU: 3-12                   [1770, 64]                --
+├─Sequential: 1-3                        [60, 64]                  --
+│    └─Sequential: 2-7                   [60, 128]                 --
+│    │    └─Linear: 3-13                 [60, 128]                 9,728
+│    │    └─ReLU: 3-14                   [60, 128]                 --
+│    └─Sequential: 2-8                   [60, 128]                 --
+│    │    └─Linear: 3-15                 [60, 128]                 16,512
+│    │    └─ReLU: 3-16                   [60, 128]                 --
+│    └─Sequential: 2-9                   [60, 64]                  --
+│    │    └─Linear: 3-17                 [60, 64]                  8,256
+│    │    └─ReLU: 3-18                   [60, 64]                  --
+├─Sequential: 1-4                        [1, 8]                    --
+│    └─Sequential: 2-10                  [1, 64]                   --
+│    │    └─Linear: 3-19                 [1, 64]                   4,160
+│    │    └─ReLU: 3-20                   [1, 64]                   --
+│    └─Sequential: 2-11                  [1, 100]                  --
+│    │    └─Linear: 3-21                 [1, 100]                  6,500
+│    │    └─ReLU: 3-22                   [1, 100]                  --
+│    └─Sequential: 2-12                  [1, 100]                  --
+│    │    └─Linear: 3-23                 [1, 100]                  10,100
+│    │    └─ReLU: 3-24                   [1, 100]                  --
+│    └─Linear: 2-13                      [1, 8]                    808
+│    └─Softmax: 2-14                     [1, 8]                    --
+==========================================================================================
+Total params: 99,236
+Trainable params: 99,236
+Non-trainable params: 0
+Total mult-adds (M): 48.13
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 4.81
+Params size (MB): 0.40
+Estimated Total Size (MB): 5.21
+==========================================================================================
+data type:  jetclass
+m_logic, pt_logic, eta_logic:  AND AND AND
+m1, m2, pt1, pt2, eta1, eta2:  0.0 10000.0 0.0 10000.0 -6.0 6.0
+skip labels:  [6, 7]
+classes:  8
+Epoch 0
+Best Validation Accuracy: 0
+Current Validation Accuracy: 0.7654456998763881
+Current Validation Loss: 0.00032191487561247225
+Saving best model based on accuracy
+Epoch 1
+Best Validation Accuracy: 0.7654456998763881
+Current Validation Accuracy: 0.7722459157125877
+Current Validation Loss: 0.00031330287634093456
+Saving best model based on accuracy
+Epoch 2
+Best Validation Accuracy: 0.7722459157125877
+Current Validation Accuracy: 0.7760518106918951
+Current Validation Loss: 0.0003069299602479983
+Saving best model based on accuracy
+Epoch 3
+Best Validation Accuracy: 0.7760518106918951
+Current Validation Accuracy: 0.7799233568906582
+Current Validation Loss: 0.00030211026894834116
+Saving best model based on accuracy
+Epoch 4
+Best Validation Accuracy: 0.7799233568906582
+Current Validation Accuracy: 0.7823336945192486
+Current Validation Loss: 0.00029895478684276893
+Saving best model based on accuracy
+Epoch 5
+Best Validation Accuracy: 0.7823336945192486
+Current Validation Accuracy: 0.7853023801380676
+Current Validation Loss: 0.00029532394983067825
+Saving best model based on accuracy
+Epoch 6
+Best Validation Accuracy: 0.7853023801380676
+Current Validation Accuracy: 0.7851466929605011
+Current Validation Loss: 0.00029535529673512407
+Epoch 7
+Best Validation Accuracy: 0.7853023801380676
+Current Validation Accuracy: 0.7974559839836034
+Current Validation Loss: 0.0002814628814724776
+Saving best model based on accuracy
+Epoch 8
+Best Validation Accuracy: 0.7974559839836034
+Current Validation Accuracy: 0.7945792100720225
+Current Validation Loss: 0.0002848307335394203
+Epoch 9
+Best Validation Accuracy: 0.7974559839836034
+Current Validation Accuracy: 0.8235595340889268
+Current Validation Loss: 0.00024788711850762344
+Saving best model based on accuracy
+Epoch 10
+Best Validation Accuracy: 0.8235595340889268
+Current Validation Accuracy: 0.7726842157586686
+Current Validation Loss: 0.00031653507716707184
+Epoch 11
+Best Validation Accuracy: 0.8235595340889268
+Current Validation Accuracy: 0.8290842405185571
+Current Validation Loss: 0.00024059229873746272
+Saving best model based on accuracy
+Epoch 12
+Best Validation Accuracy: 0.8290842405185571
+Current Validation Accuracy: 0.841232217116711
+Current Validation Loss: 0.00022409770086427293
+Saving best model based on accuracy
+Epoch 13
+Best Validation Accuracy: 0.841232217116711
+Current Validation Accuracy: 0.8432586514239124
+Current Validation Loss: 0.0002215113632123074
+Saving best model based on accuracy
+Epoch 14
+Best Validation Accuracy: 0.8432586514239124
+Current Validation Accuracy: 0.8451125168114015
+Current Validation Loss: 0.00021913400456305862
+Saving best model based on accuracy
+Epoch 15
+Best Validation Accuracy: 0.8451125168114015
+Current Validation Accuracy: 0.8458390569733787
+Current Validation Loss: 0.00021801140440649464
+Saving best model based on accuracy
+Epoch 16
+Best Validation Accuracy: 0.8458390569733787
+Current Validation Accuracy: 0.8448517876827057
+Current Validation Loss: 0.0002192820723682962
+Epoch 17
+Best Validation Accuracy: 0.8458390569733787
+Current Validation Accuracy: 0.8472539970650779
+Current Validation Loss: 0.0002159285417900744
+Saving best model based on accuracy
+Epoch 18
+Best Validation Accuracy: 0.8472539970650779
+Current Validation Accuracy: 0.8477535715826509
+Current Validation Loss: 0.000214921337701749
+Saving best model based on accuracy
+Epoch 19
+Best Validation Accuracy: 0.8477535715826509
+Current Validation Accuracy: 0.8487152056352506
+Current Validation Loss: 0.00021306569588706398
+Saving best model based on accuracy
+Epoch 20
+Best Validation Accuracy: 0.8487152056352506
+Current Validation Accuracy: 0.8493592128356262
+Current Validation Loss: 0.00021222193759718526
+Saving best model based on accuracy
+Epoch 21
+Best Validation Accuracy: 0.8493592128356262
+Current Validation Accuracy: 0.8498963023357453
+Current Validation Loss: 0.00021126501720064646
+Saving best model based on accuracy
+Epoch 22
+Best Validation Accuracy: 0.8498963023357453
+Current Validation Accuracy: 0.8499594525563647
+Current Validation Loss: 0.000211310399284041
+Validation Accuracy has not changed much, will stop in 4 epochs if this continues
+Saving best model based on accuracy
+Epoch 23
+Best Validation Accuracy: 0.8499594525563647
+Current Validation Accuracy: 0.8503402296292082
+Current Validation Loss: 0.00021082492280066975
+Saving best model based on accuracy
+Epoch 24
+Best Validation Accuracy: 0.8503402296292082
+Current Validation Accuracy: 0.8511024090246042
+Current Validation Loss: 0.00020976212428640224
+Saving best model based on accuracy
+Epoch 25
+Best Validation Accuracy: 0.8511024090246042
+Current Validation Accuracy: 0.8515538393145763
+Current Validation Loss: 0.00020916505088751508
+Saving best model based on accuracy
+Epoch 26
+Best Validation Accuracy: 0.8515538393145763
+Current Validation Accuracy: 0.8524829603823026
+Current Validation Loss: 0.00020793950504766122
+Saving best model based on accuracy
+Epoch 27
+Best Validation Accuracy: 0.8524829603823026
+Current Validation Accuracy: 0.8528118417292906
+Current Validation Loss: 0.00020757889092988592
+Saving best model based on accuracy
+Epoch 28
+Best Validation Accuracy: 0.8528118417292906
+Current Validation Accuracy: 0.8521259427984051
+Current Validation Loss: 0.00020833294670041826
+Epoch 29
+[[9.97061074e-01 1.77404610e-04 1.42091140e-03 1.11303467e-03
+  5.63695494e-06 7.86666060e-05 2.09441578e-06 1.41220662e-04]
+ [3.26226093e-02 5.59389940e-04 1.34481534e-01 6.92706048e-01
+  1.36229381e-01 3.34575161e-05 3.36527848e-03 2.27946953e-06]
+ [2.41391240e-06 1.75629684e-05 2.81651774e-05 2.40626179e-07
+  7.20215780e-08 8.45907998e-05 6.07458173e-09 9.99866962e-01]
+ [1.05290553e-02 5.91246039e-03 4.15361114e-02 2.72764359e-03
+  1.57228205e-02 9.19550657e-01 3.09719611e-03 9.24053718e-04]
+ [3.38483801e-07 2.08819038e-05 2.05571489e-08 1.13273479e-07
+  4.63129257e-11 8.06198150e-05 1.71813099e-07 9.99897838e-01]
+ [3.37639562e-04 1.83368672e-06 7.17822229e-04 2.90103583e-03
+  9.95877862e-01 4.33060950e-06 1.59344170e-04 3.21540696e-08]
+ [9.99640465e-01 2.60972161e-06 2.96222046e-04 2.03076870e-05
+  1.72418936e-07 3.52549396e-05 2.43477185e-08 4.97985002e-06]
+ [2.75653525e-04 3.34485376e-05 1.39151448e-02 4.87508159e-03
+  9.80079949e-01 4.71720432e-06 8.15890904e-04 8.48358610e-08]
+ [9.99200523e-01 8.03502844e-05 4.43770288e-04 2.28688281e-04
+  9.62798367e-07 8.92879598e-06 4.15217102e-07 3.64525113e-05]
+ [1.28952153e-02 1.04080990e-03 1.24843664e-01 1.30625367e-01
+  7.15052783e-01 4.70957093e-05 1.54926423e-02 2.38116422e-06]
+ [9.98185694e-01 4.42713872e-06 1.43815437e-03 2.47326643e-05
+  2.09808519e-07 9.62610193e-06 1.41420416e-04 1.95615939e-04]
+ [1.23432940e-02 1.92306377e-03 3.97907682e-02 6.30291179e-02
+  8.37395549e-01 7.36570000e-05 4.54179049e-02 2.66258612e-05]
+ [3.66682725e-05 7.25939390e-06 4.44254765e-05 1.30291928e-05
+  1.91509789e-05 9.99383688e-01 3.44547370e-05 4.61274612e-04]
+ [1.01981357e-01 2.82255078e-05 1.59800681e-03 4.77661379e-02
+  4.04903293e-01 4.92753636e-04 4.43209797e-01 2.04602311e-05]
+ [6.98705378e-04 2.69168196e-03 5.14359679e-03 8.76048231e-04
+  1.32802955e-03 2.25219082e-06 9.89242375e-01 1.73285007e-05]
+ [1.51312429e-06 3.49737377e-07 1.81677797e-06 9.68459943e-08
+  8.48132743e-07 9.61586773e-01 2.44757274e-07 3.84083577e-02]
+ [7.91655481e-02 6.76068652e-04 6.43679202e-01 1.04296774e-01
+  1.71447694e-01 2.38960965e-05 7.09557149e-04 1.29608543e-06]
+ [9.11821201e-02 8.85271966e-01 2.00956352e-02 3.31048563e-04
+  4.54463298e-05 1.76156085e-04 2.21279147e-03 6.84826984e-04]
+ [2.19002999e-07 1.09529850e-07 2.81426060e-06 1.58641086e-07
+  3.70162616e-06 9.99939322e-01 1.31519073e-07 5.34486207e-05]
+ [6.60495879e-03 4.45872778e-03 6.59155473e-02 3.79990153e-02
+  8.75449300e-01 3.41964051e-06 9.56728775e-03 1.73916499e-06]]
+[[9.97061074e-01 1.77404610e-04 1.42091140e-03 1.11303467e-03
+  5.63695494e-06 7.86666060e-05 2.09441578e-06 1.41220662e-04]
+ [3.26226093e-02 5.59389940e-04 1.34481534e-01 6.92706048e-01
+  1.36229381e-01 3.34575161e-05 3.36527848e-03 2.27946953e-06]
+ [2.41391240e-06 1.75629684e-05 2.81651774e-05 2.40626179e-07
+  7.20215780e-08 8.45907998e-05 6.07458173e-09 9.99866962e-01]
+ [1.05290553e-02 5.91246039e-03 4.15361114e-02 2.72764359e-03
+  1.57228205e-02 9.19550657e-01 3.09719611e-03 9.24053718e-04]
+ [3.38483801e-07 2.08819038e-05 2.05571489e-08 1.13273479e-07
+  4.63129257e-11 8.06198150e-05 1.71813099e-07 9.99897838e-01]
+ [3.37639562e-04 1.83368672e-06 7.17822229e-04 2.90103583e-03
+  9.95877862e-01 4.33060950e-06 1.59344170e-04 3.21540696e-08]
+ [9.99640465e-01 2.60972161e-06 2.96222046e-04 2.03076870e-05
+  1.72418936e-07 3.52549396e-05 2.43477185e-08 4.97985002e-06]
+ [2.75653525e-04 3.34485376e-05 1.39151448e-02 4.87508159e-03
+  9.80079949e-01 4.71720432e-06 8.15890904e-04 8.48358610e-08]
+ [9.99200523e-01 8.03502844e-05 4.43770288e-04 2.28688281e-04
+  9.62798367e-07 8.92879598e-06 4.15217102e-07 3.64525113e-05]
+ [1.28952153e-02 1.04080990e-03 1.24843664e-01 1.30625367e-01
+  7.15052783e-01 4.70957093e-05 1.54926423e-02 2.38116422e-06]
+ [9.98185694e-01 4.42713872e-06 1.43815437e-03 2.47326643e-05
+  2.09808519e-07 9.62610193e-06 1.41420416e-04 1.95615939e-04]
+ [1.23432940e-02 1.92306377e-03 3.97907682e-02 6.30291179e-02
+  8.37395549e-01 7.36570000e-05 4.54179049e-02 2.66258612e-05]
+ [3.66682725e-05 7.25939390e-06 4.44254765e-05 1.30291928e-05
+  1.91509789e-05 9.99383688e-01 3.44547370e-05 4.61274612e-04]
+ [1.01981357e-01 2.82255078e-05 1.59800681e-03 4.77661379e-02
+  4.04903293e-01 4.92753636e-04 4.43209797e-01 2.04602311e-05]
+ [6.98705378e-04 2.69168196e-03 5.14359679e-03 8.76048231e-04
+  1.32802955e-03 2.25219082e-06 9.89242375e-01 1.73285007e-05]
+ [1.51312429e-06 3.49737377e-07 1.81677797e-06 9.68459943e-08
+  8.48132743e-07 9.61586773e-01 2.44757274e-07 3.84083577e-02]
+ [7.91655481e-02 6.76068652e-04 6.43679202e-01 1.04296774e-01
+  1.71447694e-01 2.38960965e-05 7.09557149e-04 1.29608543e-06]
+ [9.11821201e-02 8.85271966e-01 2.00956352e-02 3.31048563e-04
+  4.54463298e-05 1.76156085e-04 2.21279147e-03 6.84826984e-04]
+ [2.19002999e-07 1.09529850e-07 2.81426060e-06 1.58641086e-07
+  3.70162616e-06 9.99939322e-01 1.31519073e-07 5.34486207e-05]
+ [6.60495879e-03 4.45872778e-03 6.59155473e-02 3.79990153e-02
+  8.75449300e-01 3.41964051e-06 9.56728775e-03 1.73916499e-06]]
+[[1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 1. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0. 0.]]
+Best Validation Accuracy: 0.8528118417292906
+Current Validation Accuracy: 0.8531175888370418
+Current Validation Loss: 0.00020693841332358563
+Saving best model based on accuracy
+Saving last model

@@ -1,0 +1,621 @@
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+A conda environment has been detected CONDA_PREFIX=
+/u/avroy/.conda/envs/toptagger_env 
+anaconda3_gpu is loaded. Consider running conda deactivate and reloading it.
+
+Currently Loaded Modules:
+  1) cue-login-env/1.0   4) gcc/11.2.0    7) openmpi/4.1.2
+  2) default             5) cuda/11.6.1   8) cudnn/8.4.1.50
+  3) modtree/gpu         6) ucx/1.11.2    9) anaconda3_gpu/4.13.0
+
+ 
+
+/u/avroy/UQ_XAI_Studies/models/PFIN_UQ/model/jobsub
+total 192K
+-rw-rw----+ 1 avroy delta_bbhj  925 Mar 31 16:58 jobsubmitter_dummy.py
+-rw-rw----+ 1 avroy delta_bbhj  15K May 18 13:59 jobsubmitter.py
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0.1_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0.1_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0.1_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_0_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_nominal_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_nominal_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_nominal_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_baseline_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_dropout_baseline.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_dropout_skiptop.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.2K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_dropout_skipwz.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skiptop_9.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_0.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_1.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_2.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_3.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_4.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_5.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_6.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_7.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_8.slurm
+-rw-rw----+ 1 avroy delta_bbhj 1.1K May 18 14:02 UQPFIN-run-JNqgmerged_softmax_skipwz_9.slurm
+-rw-------+ 1 avroy delta_bbhj  969 May 15 09:44 UQPFIN-run.slurm
+/projects/bbhj/avroy/UQ_XAI_Studies/models/PFIN_UQ/model
+total 176K
+drwxr-s---+ 2 avroy delta_bbhj  12K May 18 15:06 jobouts
+drwxr-s---+ 2 avroy delta_bbhj 4.0K May 18 14:02 jobsub
+-rw-rw----+ 1 avroy delta_bbhj 8.4K May 15 14:46 PFINDataset.py
+drwxrws---+ 2 avroy delta_bbhj 4.0K May 18 09:47 __pycache__
+drwxrws---+ 2 avroy delta_bbhj  12K May 18 15:06 trained_model_dicts
+drwxr-s---+ 2 avroy delta_bbhj 4.0K Mar 31 15:09 trained_model_dicts_old
+drwxrws---+ 2 avroy delta_bbhj  20K May 18 15:06 trained_models
+drwxr-s---+ 2 avroy delta_bbhj 4.0K Mar 31 15:10 trained_models_old
+-rw-rw----+ 1 avroy delta_bbhj  23K May 18 11:00 train_mod.py
+-rw-rw----+ 1 avroy delta_bbhj  23K May 18 10:56 train_mod.py~
+-rw-rw----+ 1 avroy delta_bbhj  20K May 18 13:50 train.py
+-rw-rw----+ 1 avroy delta_bbhj  20K May 18 13:41 train.py~
+-rw-rw----+ 1 avroy delta_bbhj  13K May  5 09:36 UQPFIN.py
+job is starting on gpua063.delta.ncsa.illinois.edu
+# conda environments:
+#
+base                     /sw/external/python/anaconda3
+toptagger_env         *  /u/avroy/.conda/envs/toptagger_env
+
+/sw/external/python/anaconda3_gpu/bin/python
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+UQPFIN                                   [1, 3]                    --
+├─Sequential: 1-1                        [30, 64]                  --
+│    └─Sequential: 2-1                   [30, 100]                 --
+│    │    └─Linear: 3-1                  [30, 100]                 400
+│    │    └─ReLU: 3-2                    [30, 100]                 --
+│    └─Sequential: 2-2                   [30, 100]                 --
+│    │    └─Linear: 3-3                  [30, 100]                 10,100
+│    │    └─ReLU: 3-4                    [30, 100]                 --
+│    └─Sequential: 2-3                   [30, 64]                  --
+│    │    └─Linear: 3-5                  [30, 64]                  6,464
+│    │    └─ReLU: 3-6                    [30, 64]                  --
+├─Sequential: 1-2                        [435, 64]                 --
+│    └─Sequential: 2-4                   [435, 128]                --
+│    │    └─Linear: 3-7                  [435, 128]                640
+│    │    └─ReLU: 3-8                    [435, 128]                --
+│    └─Sequential: 2-5                   [435, 128]                --
+│    │    └─Linear: 3-9                  [435, 128]                16,512
+│    │    └─ReLU: 3-10                   [435, 128]                --
+│    └─Sequential: 2-6                   [435, 64]                 --
+│    │    └─Linear: 3-11                 [435, 64]                 8,256
+│    │    └─ReLU: 3-12                   [435, 64]                 --
+├─Sequential: 1-3                        [30, 64]                  --
+│    └─Sequential: 2-7                   [30, 128]                 --
+│    │    └─Linear: 3-13                 [30, 128]                 8,704
+│    │    └─ReLU: 3-14                   [30, 128]                 --
+│    └─Sequential: 2-8                   [30, 128]                 --
+│    │    └─Linear: 3-15                 [30, 128]                 16,512
+│    │    └─ReLU: 3-16                   [30, 128]                 --
+│    └─Sequential: 2-9                   [30, 64]                  --
+│    │    └─Linear: 3-17                 [30, 64]                  8,256
+│    │    └─ReLU: 3-18                   [30, 64]                  --
+├─Sequential: 1-4                        [1, 3]                    --
+│    └─Sequential: 2-10                  [1, 64]                   --
+│    │    └─Linear: 3-19                 [1, 64]                   4,160
+│    │    └─ReLU: 3-20                   [1, 64]                   --
+│    └─Sequential: 2-11                  [1, 100]                  --
+│    │    └─Linear: 3-21                 [1, 100]                  6,500
+│    │    └─ReLU: 3-22                   [1, 100]                  --
+│    └─Sequential: 2-12                  [1, 100]                  --
+│    │    └─Linear: 3-23                 [1, 100]                  10,100
+│    │    └─ReLU: 3-24                   [1, 100]                  --
+│    └─Linear: 2-13                      [1, 3]                    303
+│    └─Softmax: 2-14                     [1, 3]                    --
+==========================================================================================
+Total params: 96,907
+Trainable params: 96,907
+Non-trainable params: 0
+Total mult-adds (M): 12.59
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 1.26
+Params size (MB): 0.39
+Estimated Total Size (MB): 1.64
+==========================================================================================
+data type:  JNqgmerged
+m_logic, pt_logic, eta_logic:  AND AND AND
+m1, m2, pt1, pt2, eta1, eta2:  0.0 10000.0 0.0 10000.0 -6.0 6.0
+skip labels:  [1]
+classes:  3
+Epoch 0
+Best Validation Accuracy: 0
+Current Validation Accuracy: 0.8126641871851608
+Current Validation Loss: 0.0027043955408916774
+Saving best model based on accuracy
+Epoch 1
+Best Validation Accuracy: 0.8126641871851608
+Current Validation Accuracy: 0.8228520314486135
+Current Validation Loss: 0.0025807331462660943
+Saving best model based on accuracy
+Epoch 2
+Best Validation Accuracy: 0.8228520314486135
+Current Validation Accuracy: 0.8406478037757168
+Current Validation Loss: 0.0023864585690722617
+Saving best model based on accuracy
+Epoch 3
+Best Validation Accuracy: 0.8406478037757168
+Current Validation Accuracy: 0.8431900569653029
+Current Validation Loss: 0.0023223687899684587
+Saving best model based on accuracy
+Epoch 4
+Best Validation Accuracy: 0.8431900569653029
+Current Validation Accuracy: 0.8522103479120569
+Current Validation Loss: 0.0022183673484284664
+Saving best model based on accuracy
+Epoch 5
+Best Validation Accuracy: 0.8522103479120569
+Current Validation Accuracy: 0.8273621769219905
+Current Validation Loss: 0.00249781878978585
+Epoch 6
+Best Validation Accuracy: 0.8522103479120569
+Current Validation Accuracy: 0.8594698931312085
+Current Validation Loss: 0.0021120480865101194
+Saving best model based on accuracy
+Epoch 7
+Best Validation Accuracy: 0.8594698931312085
+Current Validation Accuracy: 0.8652135021891625
+Current Validation Loss: 0.0020427063794286678
+Saving best model based on accuracy
+Epoch 8
+Best Validation Accuracy: 0.8652135021891625
+Current Validation Accuracy: 0.8595358033990866
+Current Validation Loss: 0.0021015035499147394
+Epoch 9
+Best Validation Accuracy: 0.8652135021891625
+Current Validation Accuracy: 0.8598371074808154
+Current Validation Loss: 0.0020965001639895093
+Epoch 10
+Best Validation Accuracy: 0.8652135021891625
+Current Validation Accuracy: 0.8656277953015394
+Current Validation Loss: 0.002015349226540964
+Saving best model based on accuracy
+Epoch 11
+Best Validation Accuracy: 0.8656277953015394
+Current Validation Accuracy: 0.8686314203662727
+Current Validation Loss: 0.001979058791388844
+Saving best model based on accuracy
+Epoch 12
+Best Validation Accuracy: 0.8686314203662727
+Current Validation Accuracy: 0.8624735181959418
+Current Validation Loss: 0.0020384608077315992
+Epoch 13
+Best Validation Accuracy: 0.8686314203662727
+Current Validation Accuracy: 0.8582458452991856
+Current Validation Loss: 0.0021101591889116644
+Epoch 14
+Best Validation Accuracy: 0.8686314203662727
+Current Validation Accuracy: 0.864987524127866
+Current Validation Loss: 0.002018182061945481
+Epoch 15
+Best Validation Accuracy: 0.8686314203662727
+Current Validation Accuracy: 0.8709947742573325
+Current Validation Loss: 0.0019292160775341459
+Saving best model based on accuracy
+Epoch 16
+Best Validation Accuracy: 0.8709947742573325
+Current Validation Accuracy: 0.8628219010404407
+Current Validation Loss: 0.0020575360386201336
+Epoch 17
+Best Validation Accuracy: 0.8709947742573325
+Current Validation Accuracy: 0.8678028341415187
+Current Validation Loss: 0.0019720392305800135
+Epoch 18
+Best Validation Accuracy: 0.8709947742573325
+Current Validation Accuracy: 0.8693281860552705
+Current Validation Loss: 0.0019453474215198206
+Epoch 19
+Best Validation Accuracy: 0.8709947742573325
+Current Validation Accuracy: 0.8684619368203004
+Current Validation Loss: 0.001969037168746917
+Epoch 20
+Best Validation Accuracy: 0.8709947742573325
+Current Validation Accuracy: 0.8726896097170567
+Current Validation Loss: 0.001905974884793323
+Saving best model based on accuracy
+Epoch 21
+Best Validation Accuracy: 0.8726896097170567
+Current Validation Accuracy: 0.8637352290381809
+Current Validation Loss: 0.002019771223749337
+Epoch 22
+Best Validation Accuracy: 0.8726896097170567
+Current Validation Accuracy: 0.8727555199849348
+Current Validation Loss: 0.001913717713633711
+Saving best model based on accuracy
+Epoch 23
+Best Validation Accuracy: 0.8727555199849348
+Current Validation Accuracy: 0.871625629678452
+Current Validation Loss: 0.0019134783855934085
+Epoch 24
+Best Validation Accuracy: 0.8727555199849348
+Current Validation Accuracy: 0.8740172308271739
+Current Validation Loss: 0.0018788858409835077
+Saving best model based on accuracy
+Epoch 25
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8715126406478038
+Current Validation Loss: 0.001923729904368853
+Epoch 26
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8649027823548797
+Current Validation Loss: 0.0020021659697882902
+Epoch 27
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8735181959418107
+Current Validation Loss: 0.0018858868431435496
+Epoch 28
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8730097453038934
+Current Validation Loss: 0.0018939369214265216
+Epoch 29
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.871587966668236
+Current Validation Loss: 0.001914456025517305
+Epoch 30
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8730285768090015
+Current Validation Loss: 0.0018931581201394408
+Epoch 31
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8722188220893555
+Current Validation Loss: 0.0019066281244527047
+Epoch 32
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8720964173061532
+Current Validation Loss: 0.0019045583672635967
+Epoch 33
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8714090673697096
+Current Validation Loss: 0.0019156653840047627
+Epoch 34
+Best Validation Accuracy: 0.8740172308271739
+Current Validation Accuracy: 0.8755990772562497
+Current Validation Loss: 0.0018615296538179976
+Saving best model based on accuracy
+Epoch 35
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8679911491925992
+Current Validation Loss: 0.0019606019831731893
+Epoch 36
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.872821430252813
+Current Validation Loss: 0.0019056510506620919
+Epoch 37
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8710795160303187
+Current Validation Loss: 0.0019284186025476462
+Epoch 38
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8709853585047785
+Current Validation Loss: 0.0019146196400006328
+Epoch 39
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.872821430252813
+Current Validation Loss: 0.001902811691045009
+Epoch 40
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8735841062096888
+Current Validation Loss: 0.001886688758102235
+Epoch 41
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8745256814650911
+Current Validation Loss: 0.0018743217356219242
+Epoch 42
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.872030507038275
+Current Validation Loss: 0.0019068485732458163
+Epoch 43
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8745068499599831
+Current Validation Loss: 0.0018727800888865016
+Epoch 44
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.875307188927075
+Current Validation Loss: 0.0018617483527190852
+Epoch 45
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8713525728543854
+Current Validation Loss: 0.001910160555379785
+Epoch 46
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8662304034649969
+Current Validation Loss: 0.0019784329806415324
+Epoch 47
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8753542676898451
+Current Validation Loss: 0.0018543735422223118
+Epoch 48
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8753542676898451
+Current Validation Loss: 0.0018792061288895217
+Epoch 49
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8732074761075279
+Current Validation Loss: 0.001882888219500322
+Epoch 50
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.8718704392448566
+Current Validation Loss: 0.001899874120982969
+Epoch 51
+Best Validation Accuracy: 0.8755990772562497
+Current Validation Accuracy: 0.875721482039452
+Current Validation Loss: 0.0018641336863505953
+Saving best model based on accuracy
+Epoch 52
+Best Validation Accuracy: 0.875721482039452
+Current Validation Accuracy: 0.8720870015535992
+Current Validation Loss: 0.0018949156703262488
+Epoch 53
+Best Validation Accuracy: 0.875721482039452
+Current Validation Accuracy: 0.8739136575490796
+Current Validation Loss: 0.001875414755333054
+Epoch 54
+Best Validation Accuracy: 0.875721482039452
+Current Validation Accuracy: 0.8742432088884704
+Current Validation Loss: 0.0018688904157909913
+Epoch 55
+Best Validation Accuracy: 0.875721482039452
+Current Validation Accuracy: 0.8658066946000659
+Current Validation Loss: 0.001997865565241486
+Epoch 56
+Best Validation Accuracy: 0.875721482039452
+Current Validation Accuracy: 0.8760510333788428
+Current Validation Loss: 0.0018486464561241326
+Saving best model based on accuracy
+Epoch 57
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.8731227343345417
+Current Validation Loss: 0.0018871120546257074
+Epoch 58
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.870797043453698
+Current Validation Loss: 0.0019276564981937296
+Epoch 59
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.8739607363118497
+Current Validation Loss: 0.0018750015831247326
+Epoch 60
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.875749729297114
+Current Validation Loss: 0.0018606942146490379
+Epoch 61
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.8752318629066428
+Current Validation Loss: 0.001860500211646331
+Epoch 62
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.8753636834423991
+Current Validation Loss: 0.001862254941409032
+Epoch 63
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.8744409396921049
+Current Validation Loss: 0.001876204612143862
+Epoch 64
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.8733769596535003
+Current Validation Loss: 0.0019068044431914124
+Epoch 65
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.8737065109928911
+Current Validation Loss: 0.001880209606940068
+Epoch 66
+Best Validation Accuracy: 0.8760510333788428
+Current Validation Accuracy: 0.87737865448896
+Current Validation Loss: 0.0018412780676974139
+Saving best model based on accuracy
+Epoch 67
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8759286285956405
+Current Validation Loss: 0.0018540314842115648
+Epoch 68
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8736406007250129
+Current Validation Loss: 0.0018855551248171207
+Epoch 69
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8715408879054658
+Current Validation Loss: 0.001929042134450646
+Epoch 70
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8693752648180406
+Current Validation Loss: 0.0019392207119683863
+Epoch 71
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8731603973447578
+Current Validation Loss: 0.0018994951777401845
+Epoch 72
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8727178569747187
+Current Validation Loss: 0.0019081265110287321
+Epoch 73
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8755331669883716
+Current Validation Loss: 0.00186429030729897
+Epoch 74
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8737912527658773
+Current Validation Loss: 0.0018800842282709319
+Epoch 75
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8758721340803164
+Current Validation Loss: 0.0018550763887670112
+Epoch 76
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.874911727319806
+Current Validation Loss: 0.0018667841993377885
+Epoch 77
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8763523374605715
+Current Validation Loss: 0.001862995926115193
+Epoch 78
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8768419565933807
+Current Validation Loss: 0.0018437640942016859
+Epoch 79
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8753730991949532
+Current Validation Loss: 0.001867504551958316
+Epoch 80
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8749776375876842
+Current Validation Loss: 0.0018612929038939506
+Epoch 81
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8758156395649922
+Current Validation Loss: 0.0018625761090314498
+Epoch 82
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8729814980462314
+Current Validation Loss: 0.0019000107654939965
+Epoch 83
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.875721482039452
+Current Validation Loss: 0.0018635629172278215
+Epoch 84
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8718892707499647
+Current Validation Loss: 0.0019065233778692023
+Epoch 85
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.86668235958759
+Current Validation Loss: 0.00199038628596639
+Epoch 86
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.874073725342498
+Current Validation Loss: 0.0018689713819704567
+Epoch 87
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8733016336330681
+Current Validation Loss: 0.0018867356559661287
+Epoch 88
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8685466785932866
+Current Validation Loss: 0.001975861492564879
+Epoch 89
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8759851231109647
+Current Validation Loss: 0.0018540757780026583
+Epoch 90
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8748458170519279
+Current Validation Loss: 0.0018621008853881823
+Epoch 91
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8755425827409256
+Current Validation Loss: 0.0018583345627033814
+Epoch 92
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8754955039781555
+Current Validation Loss: 0.0018773249558184388
+Epoch 93
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8686690833764888
+Current Validation Loss: 0.001947276500550868
+Epoch 94
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8712772468339532
+Current Validation Loss: 0.0019095369754922541
+Epoch 95
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8743467821665647
+Current Validation Loss: 0.0018792126863545254
+Epoch 96
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8760698648839509
+Current Validation Loss: 0.0018558528722048108
+Epoch 97
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8751565368862106
+Current Validation Loss: 0.0018645194324529595
+Epoch 98
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8754766724730474
+Current Validation Loss: 0.001861180432081548
+Epoch 99
+[[8.92630041e-01 5.54817207e-02 5.18881492e-02]
+ [2.88662355e-04 3.68757151e-06 9.99707639e-01]
+ [3.93267907e-03 1.32627581e-04 9.95934725e-01]
+ [7.55617976e-01 1.33078262e-01 1.11303784e-01]
+ [5.84698059e-02 6.57683372e-01 2.83846885e-01]
+ [3.97438228e-01 2.68505901e-01 3.34055841e-01]
+ [7.78314829e-01 1.14267863e-01 1.07417338e-01]
+ [2.14984156e-02 8.77692997e-01 1.00808576e-01]
+ [8.09452683e-02 8.81204069e-01 3.78506258e-02]
+ [7.58738458e-01 1.25426620e-01 1.15834951e-01]
+ [6.53334111e-02 3.56146991e-02 8.99051845e-01]
+ [8.30103517e-01 8.92558321e-02 8.06406513e-02]
+ [7.12490408e-03 9.81799841e-01 1.10752201e-02]
+ [4.62445244e-02 1.28287368e-03 9.52472568e-01]
+ [6.94632411e-01 1.92477003e-01 1.12890638e-01]
+ [7.94861734e-01 1.65185601e-01 3.99526618e-02]
+ [4.24867903e-06 2.63523862e-06 9.99993086e-01]
+ [1.01210643e-02 3.37705691e-03 9.86501992e-01]
+ [2.99084354e-02 8.95108700e-01 7.49828145e-02]
+ [1.61760754e-03 3.91345093e-05 9.98343229e-01]]
+[[8.92630041e-01 5.54817207e-02 5.18881492e-02]
+ [2.88662355e-04 3.68757151e-06 9.99707639e-01]
+ [3.93267907e-03 1.32627581e-04 9.95934725e-01]
+ [7.55617976e-01 1.33078262e-01 1.11303784e-01]
+ [5.84698059e-02 6.57683372e-01 2.83846885e-01]
+ [3.97438228e-01 2.68505901e-01 3.34055841e-01]
+ [7.78314829e-01 1.14267863e-01 1.07417338e-01]
+ [2.14984156e-02 8.77692997e-01 1.00808576e-01]
+ [8.09452683e-02 8.81204069e-01 3.78506258e-02]
+ [7.58738458e-01 1.25426620e-01 1.15834951e-01]
+ [6.53334111e-02 3.56146991e-02 8.99051845e-01]
+ [8.30103517e-01 8.92558321e-02 8.06406513e-02]
+ [7.12490408e-03 9.81799841e-01 1.10752201e-02]
+ [4.62445244e-02 1.28287368e-03 9.52472568e-01]
+ [6.94632411e-01 1.92477003e-01 1.12890638e-01]
+ [7.94861734e-01 1.65185601e-01 3.99526618e-02]
+ [4.24867903e-06 2.63523862e-06 9.99993086e-01]
+ [1.01210643e-02 3.37705691e-03 9.86501992e-01]
+ [2.99084354e-02 8.95108700e-01 7.49828145e-02]
+ [1.61760754e-03 3.91345093e-05 9.98343229e-01]]
+[[1. 0. 0.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 1. 0.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [1. 0. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [1. 0. 0.]
+ [0. 0. 1.]
+ [1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]]
+Best Validation Accuracy: 0.87737865448896
+Current Validation Accuracy: 0.8740266465797278
+Current Validation Loss: 0.0018840517081433583
+Saving last model
