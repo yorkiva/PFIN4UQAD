@@ -14,7 +14,7 @@
    "preload": false,
    "preload_file": "",
    "klcoef": "0",
-   "massrange": "AND:0,10000.",
+   "massrange": "AND:-1,10000.",
    "ptrange": "AND:0,10000",
    "etarange": "AND:-6,6",
    "skiplabels": "8,9",
