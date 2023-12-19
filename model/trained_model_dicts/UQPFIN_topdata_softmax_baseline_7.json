@@ -9,7 +9,7 @@
    "epochs": 50,
    "label": "topdata_softmax_baseline_7",
    "batch_size": 250,
-   "data_loc": "/scratch/bbuw/avroy/jet_tagging_datasets/datasets/",
+   "data_loc": "../datasets/",
    "data_type": "topdata",
    "preload": false,
    "preload_file": "",

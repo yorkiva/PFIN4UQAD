@@ -10,6 +10,11 @@ import torch.nn as nn
 import glob
 import argparse, os, json, sys
 
+try:
+    import wandb
+except ImportError:
+    wandb = None
+
 def seed_everything(seed: int):
     import random, os
     import numpy as np
@@ -98,10 +103,17 @@ if __name__ == "__main__":
     parser.add_argument("--batch-mode", action="store_true", dest="batchmode", default=False, help="Set this flag when running in batch mode to suppress tqdm progress bars")
     parser.add_argument("--use-softmax", action="store_true", dest="use_softmax", default=False, help="Set this flag when using softmax probabilites")
     parser.add_argument("--use-dropout", action="store_true", dest="use_dropout", default=False, help="Set this flag when using dropout layers")
-    
+    parser.add_argument('--load-json', type=str, action="store", dest="load_json", default="", help='Load settings from file in json format. Command line options override values in file.')
     
     
     args = parser.parse_args()
+    
+    if args.load_json:
+        with open(args.load_json, 'rt') as f:
+            t_args = argparse.Namespace()
+            t_args.__dict__.update(json.load(f))
+            args = parser.parse_args(namespace=t_args)
+        
     # seed_everything(42)
     if not os.path.exists(args.outdir):
         os.mkdir(args.outdir)
@@ -119,7 +131,10 @@ if __name__ == "__main__":
         
     model_dict = {}
     for arg in vars(args):
+        if arg == 'load_json':
+            continue
         model_dict[arg] = getattr(args, arg)
+    
     f_model = open("{}/UQPFIN{}.json".format(args.outdictdir, extra_name), "w")
     json.dump(model_dict, f_model, indent=3)
     f_model.close()
@@ -232,6 +247,13 @@ if __name__ == "__main__":
     print("m1, m2, pt1, pt2, eta1, eta2: ", m1, m2, pt1, pt2, eta1, eta2)
     print("skip labels: ", skiplabels)
     print("classes: ", num_classes)
+    
+    run = wandb.init(project='PFIN4UQAD',
+                         entity='akhot2',
+                         group=args.data_type,
+                         config=model_dict,
+                         reinit=True,
+                         settings=wandb.Settings(start_method="fork"))
     
     
     best_val_acc = 0
@@ -399,7 +421,15 @@ if __name__ == "__main__":
         print('Current Validation Loss: ' + str(val_loss_total))
 
         # Early stopping after at least  nepochs//4
-        
+        if wandb:
+            wandb.log(
+                {
+                    'Train loss': train_loss_total,
+                    'Train accuracy': train_acc_total,
+                    'Validation loss': val_loss_total,
+                    'Validation accuracy': val_acc_total,
+                }
+            )
         if early_stopping and epoch >= min_epoch_early_stopping:
             if abs(pre_val_acc - val_acc_total) < tolerance and abs(best_val_acc - val_acc_total) < tolerance:
                 no_change+=1
@@ -417,12 +447,15 @@ if __name__ == "__main__":
             torch.save(model.state_dict(), args.outdir + '/UQPFIN_best'+extra_name)
             best_val_acc = val_acc_total
 
-        if epoch > 2 and best_val_acc - val_acc_total > 0.1:
-            print('Validation accuracy dropped by more than 10%. Reloading best model')
-            model.load_state_dict(torch.load(args.outdir + '/UQPFIN_best'+extra_name, map_location=device))
+        #if epoch > 2 and best_val_acc - val_acc_total > 0.1:
+        #    print('Validation accuracy dropped by more than 10%. Reloading best model')
+        #    model.load_state_dict(torch.load(args.outdir + '/UQPFIN_best'+extra_name, map_location=device))
 
-        if epoch > 2 and best_val_acc < 0.55:
-            print('Validation accuracy is close to 0.5. Resetting the model')
+        if epoch > 2 and (best_val_acc < 0.55 or best_val_acc - val_acc_total > 0.1):
+            if best_val_acc - val_acc_total > 0.1:
+                print('Validation accuracy dropped by more than 10%. Resetting the model')
+            else:
+                print('Validation accuracy is close to 0.5. Resetting the model')
             del model, opt
             model = Model(particle_feats = features,
                           n_consts = Np,
@@ -449,4 +482,6 @@ if __name__ == "__main__":
 
     print('Saving last model')
     torch.save(model.state_dict(), args.outdir + '/UQPFIN_last'+extra_name)
+    if wandb:
+        wandb.finish()
 
