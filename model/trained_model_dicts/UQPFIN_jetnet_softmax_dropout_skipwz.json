@@ -20,5 +20,6 @@
    "skiplabels": "3,4",
    "batchmode": false,
    "use_softmax": true,
-   "use_dropout": true
+   "use_dropout": true,
+   "ndata": 0
 }

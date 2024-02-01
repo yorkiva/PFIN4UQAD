@@ -59,11 +59,15 @@ class Data(object):
     #         except StopIteration:
     #             print("start over generator loop")
 
-    def generate_data(self):
+    def generate_data(self, shuffle=False):
         """Yields batches of training data until none are left."""
         leftovers = None
-        for cur_file_name in self.file_names:
-            data, mask, aug_data, labels = self.load_data(cur_file_name)
+        file_names = self.file_names.copy()
+        if shuffle:
+            np.random.shuffle(file_names)
+          
+        for cur_file_name in file_names:
+            data, mask, aug_data, labels = self.load_data(cur_file_name, shuffle=shuffle)
             # concatenate any leftover data from the previous file
             if leftovers is not None:
                 data = self.concat_data(leftovers[0], data)
@@ -146,7 +150,7 @@ class JetClassData(Data):
         batch_size):
         super(JetClassData, self).__init__(batch_size)
 
-    def load_data(self, in_file_name):
+    def load_data(self, in_file_name, shuffle = False):
         """Loads numpy arrays from H5 file.
         If the features/labels groups contain more than one dataset,
         we load them all, alphabetically by key."""
@@ -156,6 +160,13 @@ class JetClassData(Data):
         a = self.load_hdf5_data(h5_file["aug_data"])
         l = self.load_hdf5_data(h5_file["labels"])
         h5_file.close()
+        if shuffle:
+            idx = np.arange(0, len(d))
+            np.random.shuffle(idx)
+            d = d[idx]
+            m = m[idx]
+            a = a[idx]
+            l = l[idx]
         return d,m,a,l
 
     def load_hdf5_data(self, data):

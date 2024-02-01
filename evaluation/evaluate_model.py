@@ -48,7 +48,7 @@ def query_yes_no(question, default="yes"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--outdir", type=str, action="store", dest="outdir", default="results/", help="Output directory for evaluation results" )
-    parser.add_argument("--data-type", type=str, action="store", dest="data_type", default="topdata", choices={"topdata", "jetnet", "JNqgmerged", "jetclass"}, help="Dataset to evaluate on" )
+    parser.add_argument("--data", type=str, action="store", dest="data_type", default="topdata", choices={"topdata", "jetnet", "JNqgmerged", "jetclass"}, help="Dataset to evaluate on" )
     parser.add_argument("--make-file", action="store_true", dest="make_file", default=False, help="Set this flag when recording evaluation results")
     parser.add_argument("--data-loc", type=str, action="store", dest="data_loc", default="../datasets/", help="Directory for data" )
     parser.add_argument("--modeldir", type=str, action="store", dest="modeldir", default="../model/trained_models/", help="Directory for trained model parameters" )
@@ -62,18 +62,22 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     makeFile = args.make_file
 
+    if not os.path.exists(args.outdir):
+        os.mkdir(args.outdir)
+    
     saved_model_loc = args.modeldir
     saved_model_dict_loc = args.modeldictdir
+    model_version = "_best"
 
     dataset = args.data_type
     if args.model_type == "dropout":
-        all_models = [f for f in os.listdir(saved_model_loc) if "_best" in f and dataset in f and "alldicts" not in f and "_softmax" in f and "_dropout" in f and args.tag in f]
+        all_models = [f for f in os.listdir(saved_model_loc) if model_version in f and dataset in f and "alldicts" not in f and "_softmax" in f and "_dropout" in f and args.tag in f]
         n = 1
     elif args.model_type == "ensemble":
-        all_models = [f for f in os.listdir(saved_model_loc) if "_best" in f and "_trial" not in f and dataset in f and "_softmax" in f and "_dropout" not in f and args.tag in f] 
+        all_models = [f for f in os.listdir(saved_model_loc) if model_version in f and "_trial" not in f and dataset in f and "_softmax" in f and "_dropout" not in f and args.tag in f] 
         n = 2
     elif args.model_type == "edl":
-        all_models = [f for f in os.listdir(saved_model_loc) if "_best" in f and "_trial" not in f and dataset in f and 'softmax' not in f and "20M" not in f and args.tag in f]
+        all_models = [f for f in os.listdir(saved_model_loc) if model_version in f and "_trial" not in f and dataset in f and 'softmax' not in f and "20M" not in f and args.tag in f]
         n = 1
         
     all_models = sorted(all_models)
@@ -83,6 +87,9 @@ if __name__ == "__main__":
         tag = modelname.strip().split('_')[-n]
         if tag not in tags:
             tags.append(tag)
+    if not len(all_models):
+        assert False, "No models found"
+    print("Type: ", model_version[1:])
     print("Models:")
     print("\n".join(all_models))
     if args.model_type != "edl":
@@ -154,7 +161,7 @@ if __name__ == "__main__":
                                               'latents': latents,
                                               'aug': aug}
         else:
-            print("{} \t\t Accuracy: {:.2f}% \t AUC: {:.2f}%".format(tag, acc, auc))
+            print("{}\t\t Accuracy: {:.2f}% \t AUC: {:.2f}%".format(tag, acc, auc))
             model_results[tag] = {'labels' : labels, 
                                               'preds': preds, 
                                               'maxprobs': maxprobs,
@@ -181,4 +188,4 @@ if __name__ == "__main__":
             f.close()
             
             print("Results saved to {}".format(filename))
-        del evaluator
+        del evaluator, model_results, labels, preds, maxprobs, probs, sums, oods, uncs, aug

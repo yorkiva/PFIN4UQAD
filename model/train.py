@@ -14,6 +14,7 @@ try:
     import wandb
 except ImportError:
     wandb = None
+#wandb = None
 
 def seed_everything(seed: int):
     import random, os
@@ -104,7 +105,7 @@ if __name__ == "__main__":
     parser.add_argument("--use-softmax", action="store_true", dest="use_softmax", default=False, help="Set this flag when using softmax probabilites")
     parser.add_argument("--use-dropout", action="store_true", dest="use_dropout", default=False, help="Set this flag when using dropout layers")
     parser.add_argument('--load-json', type=str, action="store", dest="load_json", default="", help='Load settings from file in json format. Command line options override values in file.')
-    
+    parser.add_argument('--ndata', type=int, action="store", dest="ndata", default=0, help='Only for jetclass data- number of data files (1 file = 1M jets')
     
     args = parser.parse_args()
     
@@ -141,8 +142,6 @@ if __name__ == "__main__":
 
 
     epochs = args.epochs
-
-    
 
     #optimizer parameters
     l_rate = 1e-3 
@@ -230,13 +229,16 @@ if __name__ == "__main__":
         val_loader = DataLoader(val_set, batch_size=args.batch_size, shuffle=True, 
                                 num_workers=1, pin_memory=True, persistent_workers=True)
     else:
+        assert args.ndata != 0, "--ndata should not be 0"
         train_DS = JetClassData(batch_size = args.batch_size)
         val_DS = JetClassData(batch_size = args.batch_size)
-        train_DS.set_file_names(file_names = glob.glob(os.path.join(args.data_loc + '/' + args.data_type, "train_*.h5"))[0:20])
+        train_DS.set_file_names(file_names = glob.glob(os.path.join(args.data_loc + '/' + args.data_type, "train_*.h5"))[0:args.ndata])
         val_DS.set_file_names(file_names = glob.glob(os.path.join(args.data_loc + '/' + args.data_type, "val_*.h5"))[0:2])
 
 
     opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
+    if not args.use_softmax and args.data_type == 'jetclass':
+        scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
 
     m_logic, (m1, m2) = args.massrange.strip().split(':')[0], list(map(float, args.massrange.strip().split(':')[1].split(',')))
     pt_logic, (pt1, pt2) = args.ptrange.strip().split(':')[0], list(map(float, args.ptrange.strip().split(':')[1].split(',')))
@@ -248,8 +250,8 @@ if __name__ == "__main__":
     print("skip labels: ", skiplabels)
     print("classes: ", num_classes)
     
-    run = wandb.init(project='PFIN4UQAD',
-                         entity='akhot2',
+    run = wandb.init(project='pfin4uqad',
+                         entity='pfin4uqad',
                          group=args.data_type,
                          config=model_dict,
                          reinit=True,
@@ -264,11 +266,16 @@ if __name__ == "__main__":
 
     while epoch < epochs:
         if args.data_type == 'jetclass':
-            trainloader = train_DS.generate_data()
-            val_loader = val_DS.generate_data()
+            trainloader = train_DS.generate_data(shuffle=True)
+            val_loader = val_DS.generate_data(shuffle=True)
         print('Epoch ' + str(epoch))
         l = min(1.0, epoch/10.)
-        if args.klcoef == "nominal":
+        if "nominal" in args.klcoef:
+            if '_' in args.klcoef:
+                l = min(float(args.klcoef.split('_')[1]), epoch/10.)
+            else:
+                l = min(1.0, epoch/10.)
+        if "nominal" in args.klcoef:
             print("L = {}".format(l))
         val_loss_total = 0
         train_loss_total = 0
@@ -321,7 +328,7 @@ if __name__ == "__main__":
                 loss = LossCE(y, pred)
             elif args.klcoef == "0" or l == 0.:
                 loss = LossMSE(y, pred)
-            elif args.klcoef == "nominal":
+            elif "nominal" in args.klcoef:
                 loss = LossMSE(y, pred) + l * KLDiv(y, pred)
             else:
                 loss = LossMSE(y, pred) + float(args.klcoef)*KLDiv(y, pred)
@@ -386,7 +393,7 @@ if __name__ == "__main__":
 
                 if args.use_softmax:
                     loss = LossCE(y, pred)
-                elif args.klcoef == "nominal":
+                elif "nominal" in args.klcoef:
                     loss = LossMSE(y, pred) + l*KLDiv(y, pred)
                 elif args.klcoef == "0":
                     loss = LossMSE(y, pred)
@@ -447,15 +454,8 @@ if __name__ == "__main__":
             torch.save(model.state_dict(), args.outdir + '/UQPFIN_best'+extra_name)
             best_val_acc = val_acc_total
 
-        #if epoch > 2 and best_val_acc - val_acc_total > 0.1:
-        #    print('Validation accuracy dropped by more than 10%. Reloading best model')
-        #    model.load_state_dict(torch.load(args.outdir + '/UQPFIN_best'+extra_name, map_location=device))
-
-        if epoch > 2 and (best_val_acc < 0.55 or best_val_acc - val_acc_total > 0.1):
-            if best_val_acc - val_acc_total > 0.1:
-                print('Validation accuracy dropped by more than 10%. Resetting the model')
-            else:
-                print('Validation accuracy is close to 0.5. Resetting the model')
+        if epoch > 2 and (best_val_acc < 0.55):
+            print('Validation accuracy is close to 0.5. Resetting the model')
             del model, opt
             model = Model(particle_feats = features,
                           n_consts = Np,
@@ -466,6 +466,8 @@ if __name__ == "__main__":
                           Phi_sizes = list(map(int, args.phi_nodes.split(','))),
                           F_sizes   = list(map(int, args.f_nodes.split(',')))).to(device)
             opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
+            if not args.use_softmax and args.data_type == 'jetclass':
+                scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
             restart_count += 1
             epoch = 0
             best_val_acc = 0
@@ -476,9 +478,15 @@ if __name__ == "__main__":
             else:
                 print("Model did not improve after 3 restarts! Check!")
                 sys.exit(1)        
+        elif epoch > 2 and best_val_acc - val_acc_total > 0.1:
+            print('Validation accuracy dropped by more than 10%. Reloading best model')
+            model.load_state_dict(torch.load(args.outdir + '/UQPFIN_best'+extra_name, map_location=device))
+
 
         pre_val_acc = val_acc_total
         epoch += 1
+        if args.klcoef != "0" and not args.use_softmax and args.data_type == 'jetclass':
+            scheduler.step()
 
     print('Saving last model')
     torch.save(model.state_dict(), args.outdir + '/UQPFIN_last'+extra_name)
