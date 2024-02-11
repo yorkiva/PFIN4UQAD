@@ -97,10 +97,10 @@ if __name__ == "__main__":
         print("\n".join(tags))
     
     question = "Would you like to proceed with the above models for evaluation using the \033[31m{}\033[0m model on the \033[31m{}\033[0m dataset?".format(args.model_type, dataset)
-    answer = query_yes_no(question)
+    #answer = query_yes_no(question)
     
-    if not answer:
-        assert False, "Stopping evaluation"
+    #if not answer:
+    #    assert False, "Stopping evaluation"
     
     if dataset != 'jetclass':
         test_path = os.path.join(args.data_loc, dataset, "test.h5")

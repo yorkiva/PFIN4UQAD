@@ -230,12 +230,14 @@ class EnsembleEvaluator:
             if self.data_type == 'topdata' or self.data_type == 'jetnet' or self.data_type == "JNqgmerged":
                 test_set = PFINDataset(self.data_path)
                 testloader = DataLoader(test_set, shuffle=False, batch_size=512, num_workers=2, pin_memory=True, persistent_workers=True)
-                delete_test_set = True
             elif self.data_type == 'jetclass':
                 test_set = JetClassData(batch_size = 512)
                 test_set.set_file_names(file_names = self.data_path)
+            delete_test_set = True
         elif type(test_set) == PFINDataset:
             testloader = DataLoader(test_set, shuffle=False, batch_size=512, num_workers=2, pin_memory=True, persistent_workers=True)
+            delete_test_set = False
+        else:
             delete_test_set = False
             
         preds = []
@@ -294,7 +296,9 @@ class MCDOEvaluator:
                 test_set.set_file_names(file_names = self.data_path)
             delete_test_set = True
         elif type(test_set) == PFINDataset:
-            testloader = DataLoader(test_set, shuffle=False, batch_size=512, num_workers=2, pin_memory=True, persistent_workers=True) 
+            testloader = DataLoader(test_set, shuffle=False, batch_size=512, num_workers=2, pin_memory=True, persistent_workers=True)
+            delete_test_set = False
+        else:
             delete_test_set = False
             
         preds = []
