@@ -14,6 +14,7 @@ sys.path.append("../model")
 from PFINDataset import PFINDataset, JetClassData
 from UQPFIN import UQPFIN as Model
 import argparse
+import gc
 # %env HDF5_USE_FILE_LOCKING=FALSE
 def query_yes_no(question, default="yes"):
     """Ask a yes/no question via raw_input() and return their answer.
@@ -97,10 +98,8 @@ if __name__ == "__main__":
         print("\n".join(tags))
     
     question = "Would you like to proceed with the above models for evaluation using the \033[31m{}\033[0m model on the \033[31m{}\033[0m dataset?".format(args.model_type, dataset)
-    #answer = query_yes_no(question)
-    
-    #if not answer:
-    #    assert False, "Stopping evaluation"
+    answer = query_yes_no(question)
+    assert answer, "Stopping evaluation"
     
     if dataset != 'jetclass':
         test_path = os.path.join(args.data_loc, dataset, "test.h5")
@@ -189,3 +188,5 @@ if __name__ == "__main__":
             
             print("Results saved to {}".format(filename))
         del evaluator, model_results, labels, preds, maxprobs, probs, sums, oods, uncs, aug
+        torch.cuda.empty_cache()
+        gc.collect()

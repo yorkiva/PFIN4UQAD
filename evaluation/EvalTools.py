@@ -102,7 +102,7 @@ class ModelEvaluator:
                            use_dropout = self.use_dropout,
                            Phi_sizes = self.phi_nodes,
                            F_sizes   = self.f_nodes).to(self.device)
-        state_dict = torch.load(self.model_path)
+        state_dict = torch.load(self.model_path, map_location=self.device)
         
         new_state_dict = OrderedDict()
         for k, v in state_dict.items():
@@ -255,6 +255,7 @@ class EnsembleEvaluator:
             else:
                 _, _, _, this_probs, _, _, _ =  model_evaluator.evaluate(testloader, batchmode = batchmode)
             probs.append(this_probs[None,:,:])
+            torch.cuda.empty_cache()
             del model_evaluator
                 
                 
@@ -316,6 +317,7 @@ class MCDOEvaluator:
             else:
                 _, _, _, this_probs, _, _, _ =  model_evaluator.evaluate(testloader, batchmode = batchmode)
             probs.append(this_probs[None,:,:])
+            torch.cuda.empty_cache()
         del model_evaluator
                 
                 
