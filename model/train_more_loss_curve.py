@@ -9,7 +9,6 @@ from torchinfo import summary
 import torch.nn as nn
 import glob
 import argparse, os, json, sys
-# torch.autograd.set_detect_anomaly(True)
 
 try:
     import wandb
@@ -30,12 +29,11 @@ def seed_everything(seed: int):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = True
 
-eps=1e-15
 
 def LossCE(labels, outs):
     # labels size: (Nb, nclasses) [true values]
     # outs size: (Nb, nclasses) [NN predictions]
-    return -(labels * torch.log(outs.clamp(min=eps, max=1-eps))).sum(1).mean()
+    return -(labels * torch.log(outs)).sum(1).mean()
 
 def getprobs(outs):
     alphas = outs + 1
@@ -239,7 +237,7 @@ if __name__ == "__main__":
 
 
     opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
-    if args.data_type == 'jetclass':
+    if not args.use_softmax and args.data_type == 'jetclass':
         scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
 
     m_logic, (m1, m2) = args.massrange.strip().split(':')[0], list(map(float, args.massrange.strip().split(':')[1].split(',')))
@@ -283,6 +281,9 @@ if __name__ == "__main__":
         train_loss_total = 0
         train_acc_total = 0
         val_acc_total = 0
+
+        mse_loss_total = 0
+        kldiv_loss_total = 0
 
         #train loop
 
@@ -328,14 +329,22 @@ if __name__ == "__main__":
 
             if args.use_softmax:
                 loss = LossCE(y, pred)
+                mse_loss = LossCE(y, pred)
             elif args.klcoef == "0" or l == 0.:
                 loss = LossMSE(y, pred)
+                mse_loss = LossMSE(y, pred)
             elif "nominal" in args.klcoef:
                 loss = LossMSE(y, pred) + l * KLDiv(y, pred)
+                mse_loss = LossMSE(y, pred)
             else:
                 loss = LossMSE(y, pred) + float(args.klcoef)*KLDiv(y, pred)
+                mse_loss = LossMSE(y, pred)
+
+            kldiv_loss = KLDiv(y, pred)
 
             train_loss_total += loss.item()
+            mse_loss_total += mse_loss.item()
+            kldiv_loss_total += kldiv_loss.item()
 
             with torch.no_grad():
                 if args.use_softmax:
@@ -417,6 +426,9 @@ if __name__ == "__main__":
         val_acc_total /= nval #len(val_set)
         train_acc_total /= ntrain #len(train_set)
 
+        mse_loss_total /= ntrain #len(train_set)
+        kldiv_loss_total /= ntrain #len(train_set)
+
         if epoch == epochs - 1:
             print(pred[:20,:].cpu().numpy())
             print(probs[:20,:].cpu().numpy())
@@ -431,14 +443,53 @@ if __name__ == "__main__":
 
         # Early stopping after at least  nepochs//4
         if wandb:
-            wandb.log(
+            if args.use_softmax or args.klcoef == "0" or l == 0.:
+                wandb.log(
                 {
                     'Train loss': train_loss_total,
                     'Train accuracy': train_acc_total,
                     'Validation loss': val_loss_total,
                     'Validation accuracy': val_acc_total,
+                    # 'Non EDL Loss': mse_loss_total,
+                    # 'EDL Loss': kldiv_loss_total,
+                    # 'KL Coef': l,
                 }
-            )
+                )
+            elif "nominal" in args.klcoef:
+                wandb.log(
+                {
+                    'Train loss': train_loss_total,
+                    'Train accuracy': train_acc_total,
+                    'Validation loss': val_loss_total,
+                    'Validation accuracy': val_acc_total,
+                    'Non EDL Loss': mse_loss_total,
+                    'EDL Loss': kldiv_loss_total,
+                    'KL Coef': l,
+                }
+                )
+            else:
+                wandb.log(
+                {
+                    'Train loss': train_loss_total,
+                    'Train accuracy': train_acc_total,
+                    'Validation loss': val_loss_total,
+                    'Validation accuracy': val_acc_total,
+                    'Non EDL Loss': mse_loss_total,
+                    'EDL Loss': kldiv_loss_total,
+                    'KL Coef': float(args.klcoef),
+                }
+                )
+            # wandb.log(
+            #     {
+            #         'Train loss': train_loss_total,
+            #         'Train accuracy': train_acc_total,
+            #         'Validation loss': val_loss_total,
+            #         'Validation accuracy': val_acc_total,
+            #         'Non EDL Loss': mse_loss_total,
+            #         'EDL Loss': kldiv_loss_total,
+            #         'KL Coef': l,
+            #     }
+            # )
         if early_stopping and epoch >= min_epoch_early_stopping:
             if abs(pre_val_acc - val_acc_total) < tolerance and abs(best_val_acc - val_acc_total) < tolerance:
                 no_change+=1
@@ -468,7 +519,7 @@ if __name__ == "__main__":
                           Phi_sizes = list(map(int, args.phi_nodes.split(','))),
                           F_sizes   = list(map(int, args.f_nodes.split(',')))).to(device)
             opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
-            if args.data_type == 'jetclass':
+            if not args.use_softmax and args.data_type == 'jetclass':
                 scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
             restart_count += 1
             epoch = 0
@@ -487,7 +538,7 @@ if __name__ == "__main__":
 
         pre_val_acc = val_acc_total
         epoch += 1
-        if args.data_type == 'jetclass':
+        if args.klcoef != "0" and not args.use_softmax and args.data_type == 'jetclass':
             scheduler.step()
 
     print('Saving last model')
