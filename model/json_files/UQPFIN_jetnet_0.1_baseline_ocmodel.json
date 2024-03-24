@@ -9,7 +9,7 @@
    "epochs": 100,
    "label": "jetnet_0.1_baseline_ocmodel",
    "batch_size": 250,
-   "data_loc": "/scratch/bbuw/avroy/jet_tagging_datasets/datasets/",
+   "data_loc": "../datasets/",
    "data_type": "jetnet",
    "preload": true,
    "preload_file": "trained_models/UQPFIN_best_jetnet_0_baseline",
