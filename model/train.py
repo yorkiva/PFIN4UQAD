@@ -9,6 +9,7 @@ from torchinfo import summary
 import torch.nn as nn
 import glob
 import argparse, os, json, sys
+# torch.autograd.set_detect_anomaly(True)
 
 try:
     import wandb
@@ -29,11 +30,12 @@ def seed_everything(seed: int):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = True
 
+eps=1e-15
 
 def LossCE(labels, outs):
     # labels size: (Nb, nclasses) [true values]
     # outs size: (Nb, nclasses) [NN predictions]
-    return -(labels * torch.log(outs)).sum(1).mean()
+    return -(labels * torch.log(outs.clamp(min=eps, max=1-eps))).sum(1).mean()
 
 def getprobs(outs):
     alphas = outs + 1
@@ -237,7 +239,7 @@ if __name__ == "__main__":
 
 
     opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
-    if not args.use_softmax and args.data_type == 'jetclass':
+    if args.data_type == 'jetclass':
         scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
 
     m_logic, (m1, m2) = args.massrange.strip().split(':')[0], list(map(float, args.massrange.strip().split(':')[1].split(',')))
@@ -466,7 +468,7 @@ if __name__ == "__main__":
                           Phi_sizes = list(map(int, args.phi_nodes.split(','))),
                           F_sizes   = list(map(int, args.f_nodes.split(',')))).to(device)
             opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
-            if not args.use_softmax and args.data_type == 'jetclass':
+            if args.data_type == 'jetclass':
                 scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
             restart_count += 1
             epoch = 0
@@ -485,7 +487,7 @@ if __name__ == "__main__":
 
         pre_val_acc = val_acc_total
         epoch += 1
-        if args.klcoef != "0" and not args.use_softmax and args.data_type == 'jetclass':
+        if args.data_type == 'jetclass':
             scheduler.step()
 
     print('Saving last model')

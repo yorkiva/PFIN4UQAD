@@ -6,7 +6,7 @@
    "x_mode": "sum",
    "phi_nodes": "100,100,64",
    "f_nodes": "64,100,100",
-   "epochs": 60,
+   "epochs": 30,
    "label": "jetclass_softmax_dropout_baseline",
    "batch_size": 2500,
    "data_loc": "../datasets/",
