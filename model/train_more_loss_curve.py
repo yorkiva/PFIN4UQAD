@@ -271,7 +271,9 @@ if __name__ == "__main__":
         print('Epoch ' + str(epoch))
         l = min(1.0, epoch/10.)
         if "nominal" in args.klcoef:
-            if '_' in args.klcoef:
+            if 'slope' in args.klcoef:
+                l = min(float(args.klcoef.split('_')[1]), epoch * float(args.klcoef.split('_')[3]))
+            elif '_' in args.klcoef:
                 l = min(float(args.klcoef.split('_')[1]), epoch/10.)
             else:
                 l = min(1.0, epoch/10.)
