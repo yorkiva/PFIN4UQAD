@@ -468,7 +468,7 @@ if __name__ == "__main__":
                           Phi_sizes = list(map(int, args.phi_nodes.split(','))),
                           F_sizes   = list(map(int, args.f_nodes.split(',')))).to(device)
             opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
-            if args.data_type == 'jetclass':
+            if not args.use_softmax and args.data_type == 'jetclass':
                 scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
             restart_count += 1
             epoch = 0
@@ -487,7 +487,7 @@ if __name__ == "__main__":
 
         pre_val_acc = val_acc_total
         epoch += 1
-        if args.data_type == 'jetclass':
+        if not args.use_softmax and args.data_type == 'jetclass':
             scheduler.step()
 
     print('Saving last model')

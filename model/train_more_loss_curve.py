@@ -238,7 +238,7 @@ if __name__ == "__main__":
 
     opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
     if not args.use_softmax and args.data_type == 'jetclass':
-        scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
+        scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[epochs//3, 2*epochs//3], gamma=0.1)
 
     m_logic, (m1, m2) = args.massrange.strip().split(':')[0], list(map(float, args.massrange.strip().split(':')[1].split(',')))
     pt_logic, (pt1, pt2) = args.ptrange.strip().split(':')[0], list(map(float, args.ptrange.strip().split(':')[1].split(',')))
@@ -522,7 +522,7 @@ if __name__ == "__main__":
                           F_sizes   = list(map(int, args.f_nodes.split(',')))).to(device)
             opt = torch.optim.Adam(model.parameters(),  lr=l_rate, weight_decay=opt_weight_decay)
             if not args.use_softmax and args.data_type == 'jetclass':
-                scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[10, 20], gamma=0.1)
+                scheduler = torch.optim.lr_scheduler.MultiStepLR(opt, milestones=[epochs//3, 2*epochs//3], gamma=0.1)
             restart_count += 1
             epoch = 0
             best_val_acc = 0
