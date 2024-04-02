@@ -18,7 +18,7 @@
    "ptrange": "OR:575,625",
    "etarange": "AND:-6,6",
    "skiplabels": "",
-   "batchmode": true
+   "batchmode": true,
    "use_softmax": false,
    "use_dropout": false,
    "ndata": 0
