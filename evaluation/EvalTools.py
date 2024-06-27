@@ -11,6 +11,7 @@ from PFINDataset import PFINDataset, JetClassData
 from UQPFIN import UQPFIN as Model
 import glob
 from collections import OrderedDict
+import matplotlib.pyplot as plt
 
 def getprobs(outs):
     alphas = outs + 1
@@ -344,11 +345,23 @@ class PlotterTools:
         self.labels = model_results['labels']
         self.oods = model_results['oods']
         self.probs = model_results['probs']
+        self.sums = model_results['sums']
         self.tag = tag
         ul, ur = self.uncs.min(), self.uncs.max()
         du = (ur - ul)/100
         self.urange = np.arange(ul+du, ur-du, du)
         
+    def ID_Unc(self, ax):
+        # todo
+        
+        IDAccs = []
+        
+        for u in self.urange:
+            pred_id_indices = (self.uncs >= u) & (~self.oods)
+            idacc = (self.labels[pred_id_indices] != self.preds[pred_id_indices]).sum()/(~self.oods).sum()
+            IDAccs.append(idacc)
+            
+        ax.plot(self.urange, IDAccs, label=self.tag)
         
     def ODR_IDAcc(self, ax):
         # plots OOD Detection Rate vs ID Accuracy for differenct unc thresholds
@@ -440,9 +453,34 @@ class PlotterTools:
             RERs.append(rer)
             
         ax.plot(RERs, RARs, label=self.tag)
+    
+
+    def UNC_ENTROPY(self, ax):
+        # plots Uncertainty vs Entropy 
+        def reject_outliers(data, m=2):
+            return data[abs(data - np.mean(data)) < m * np.std(data)]
+    
+        ENTs = []
+        p = self.probs.copy()
+        p = np.where(p == 0, 1, p)
+        entropy = -np.sum(p * np.log(p), axis=1)
+            
+        y = self.uncs
+        
+        ul, ur = entropy.min(), entropy.max()
+        bins = np.linspace(ul, ur, 200)
+        digitized = np.digitize(entropy, bins)
+        
+        bin_means = np.array([y[digitized == i].mean() for i in range(1, len(bins))])
+        bin_stds = np.array([y[digitized == i].std() for i in range(1, len(bins))])
+        bin_centers = np.array([bins[i-1:i+1].mean() for i in range(1, len(bins))])       
+                        
+        ax.plot(bin_centers, bin_means, label=self.tag, alpha=0.5)
+        ax.fill_between(bin_centers, bin_means-bin_stds, bin_means+bin_stds, alpha=0.5)
+        
         
     def CDF_ENTROPY(self, ax):
-        # plots Uncertainty vs Entropy 
+        # plots CDF of Entropy 
         
         ENTs = []
         p = self.probs.copy()
@@ -459,6 +497,7 @@ class PlotterTools:
         
                         
         ax.plot(erange, ENTs, label=self.tag)
+        
    
     def UNC_FOURPLOT(self, ax):
         tp_rate = []
@@ -577,6 +616,13 @@ class PairwiseEvaluator:
         self.pt_logic,(self.pt1, self.pt2) = self.ptrange.strip().split(':')[0], list(map(float, self.ptrange.strip().split(':')[1].split(',')))
         self.eta_logic, (self.eta1, self.eta2) = self.etarange.strip().split(':')[0], list(map(float, self.etarange.strip().split(':')[1].split(',')))
         
+        if self.data_type == 'topdata':
+            features = 3
+            Np = 60
+            self.num_classes = 2
+            self.skip_labels = []
+            self.label_indices = [0,1]
+            self.data_path = "../datasets/topdata/test.h5"
         if self.data_type == 'jetnet':
             features = 3
             Np = 30
@@ -609,7 +655,7 @@ class PairwiseEvaluator:
                            Phi_sizes = self.phi_nodes,
                            F_sizes   = self.f_nodes).to(self.device)
         
-        state_dict = torch.load(self.model_path)
+        state_dict = torch.load(self.model_path, map_location=self.device)
         
         new_state_dict = OrderedDict()
         for k, v in state_dict.items():
@@ -716,3 +762,101 @@ class PairwiseEvaluator:
         return latents, labels, intfeat, preprobs, probs, masked_track, uncs        
         
         
+def uncertainty_plot(uncs, oods, maxprobs, labels, preds, key, l_max, fsize, tsize, asize, asize2):
+    fig, axes = plt.subplots(2, 4, figsize=(8*5, 8*2), sharex = False, sharey = False)
+    
+    axes[0, 0].hist(uncs[~oods],
+                    bins=np.arange(0.,1.01,0.04), 
+                    label=key + '(~oods)', 
+                    alpha = 0.7, 
+                    histtype = 'step', linewidth = 3)
+    axes[0, 0].set_xlabel("Uncertainty", fontsize=fsize)
+    axes[0, 0].tick_params(axis='both', labelsize=tsize)
+    axes[1, 0].hist(uncs[oods],
+                    bins=np.arange(0.,1.01,0.04), 
+                    label=key + '(oods)', 
+                    alpha = 0.7, 
+                    histtype = 'step', linewidth = 3)
+    axes[1, 0].set_xlabel("Uncertainty", fontsize=fsize)
+    axes[1, 0].tick_params(axis='both', labelsize=tsize)
+    
+    
+    h = axes[0, 1].hist2d(maxprobs[~oods], uncs[~oods], 
+                          cmap = 'winter',
+                          bins = [np.arange(0.,1.01,0.04), np.arange(0.,1.01,0.04)])
+    cbar = fig.colorbar(h[3], ax=axes[0, 1])
+    axes[0, 1].set_xlabel("Max. Prob.", fontsize=fsize)
+    axes[0, 1].set_ylabel("Uncertainty", fontsize=fsize)
+    axes[0, 1].tick_params(axis='both', labelsize=tsize)
+    cbar.ax.tick_params(axis='y', labelsize=tsize)
+    
+    h = axes[1, 1].hist2d(maxprobs[oods], uncs[oods], 
+                          cmap = 'winter',
+                          bins = [np.arange(0.,1.01,0.04), np.arange(0.,1.01,0.04)])
+    cbar = fig.colorbar(h[3], ax=axes[1, 1])
+    axes[1, 1].set_xlabel("Max. Prob.", fontsize=fsize)
+    axes[1, 1].set_ylabel("Uncertainty", fontsize=fsize)
+    axes[1, 1].tick_params(axis='both', labelsize=tsize)
+    cbar.ax.tick_params(axis='y', labelsize=tsize)
+    
+    
+    h = axes[0, 2].hist2d(labels[~oods], preds[~oods], 
+                          cmap = 'winter',
+                          bins = [np.arange(0.,l_max,1), np.arange(0.,l_max,1)])
+    
+    for i in range(len(h[2])-1):
+        for j in range(len(h[1])-1):
+            axes[0,2].text(h[1][j]+0.5,h[2][i]+0.5, int(h[0].T[i,j]), 
+                           color="w", ha="center", va="center", fontweight="bold", fontsize=asize)
+
+    cbar = fig.colorbar(h[3], ax=axes[0, 2])
+    axes[0, 2].set_xlabel("Labels", fontsize=fsize)
+    axes[0, 2].set_ylabel("Preds", fontsize=fsize)
+    axes[0, 2].tick_params(axis='both', labelsize=tsize)
+    cbar.ax.tick_params(axis='y', labelsize=tsize)
+    
+    h = axes[1, 2].hist2d(labels[oods], preds[oods], 
+                          cmap = 'winter',
+                          bins = [np.arange(0.,l_max,1), np.arange(0.,l_max,1)])
+    for i in range(len(h[2])-1):
+        for j in range(len(h[1])-1):
+            axes[1,2].text(h[1][j]+0.5,h[2][i]+0.5, int(h[0].T[i,j]), 
+                           color="w", ha="center", va="center", fontweight="bold", fontsize=asize)
+    cbar = fig.colorbar(h[3], ax=axes[1, 2])
+    axes[1, 2].set_xlabel("Labels", fontsize=fsize)
+    axes[1, 2].set_ylabel("Preds", fontsize=fsize)
+    axes[1, 2].tick_params(axis='both', labelsize=tsize)
+    cbar.ax.tick_params(axis='y', labelsize=tsize)
+    
+    
+    h = axes[0, 3].hist2d(labels[~oods], uncs[~oods] + preds[~oods] -1.e-4, 
+                          cmap = 'winter',
+                          bins = [np.arange(0.,l_max,1), np.arange(0.,l_max,0.2)])
+    cbar = fig.colorbar(h[3], ax=axes[0, 3])
+    axes[0, 3].set_xlabel("Labels", fontsize=fsize)
+    axes[0, 3].set_ylabel("Pred. Label + Unc.", fontsize=fsize)
+    axes[0, 3].tick_params(axis='both', labelsize=tsize)
+    cbar.ax.tick_params(axis='y', labelsize=tsize)
+    for i in range(len(h[2])-1):
+        for j in range(len(h[1])-1):
+            axes[0,3].text(h[1][j]+0.5,h[2][i]+0.05, int(h[0].T[i,j]), 
+                           color="w", ha="center", va="center", fontweight="bold", fontsize=asize2)
+    for jj in np.arange(1,l_max,1):
+        axes[0, 3].axhline(jj)
+    
+    h = axes[1, 3].hist2d(labels[oods], uncs[oods] + preds[oods] -1.e-4, 
+                          cmap = 'winter',
+                          bins = [np.arange(0.,l_max,1), np.arange(0.,l_max,0.2)])
+    cbar = fig.colorbar(h[3], ax=axes[1, 3])
+    axes[1, 3].set_xlabel("Labels", fontsize=fsize)
+    axes[1, 3].set_ylabel("Pred. Label + Unc.", fontsize=fsize)
+    axes[1, 3].tick_params(axis='both', labelsize=tsize)
+    cbar.ax.tick_params(axis='y', labelsize=tsize)
+    for i in range(len(h[2])-1):
+        for j in range(len(h[1])-1):
+            axes[1,3].text(h[1][j]+0.5,h[2][i]+0.05, int(h[0].T[i,j]), 
+                           color="w", ha="center", va="center", fontweight="bold", fontsize=asize2)
+            
+    for jj in np.arange(1,l_max,1):
+        axes[1, 3].axhline(jj)
+            
